@@ -1,0 +1,41 @@
+.wrapper{
+    display: flex;
+    border: 1px solid black;
+    height: 80px;
+}
+
+.labelContainer{
+    flex: 1.75;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagesContainer{
+    flex: 16;
+    background-color: rgb(32, 32, 32);
+    padding: 0 2px;
+}
+
+.settingContainer{
+    flex: 0.75;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settingIcon{
+    color: white;
+}
+
+.upAndDownContainer{
+    flex: 0.5;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+.upAndDownIcon{
+    color: white;
+}
