@@ -1,3 +1,70 @@
 .wrapper{
-    padding: 40px 200px;
+    margin: 100px 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.labelInput{
+    margin-bottom: 5px;
+}
+
+.textField{
+    width: 100%;
+    font-size: 20px;
+    padding: 5px;
+    box-sizing: border-box; /* to avoid its width exceed its parent's width when set to 100%, basically what it does is exclude the border width */
+}
+
+.uploadImagesSection{
+    border: 1px solid black;
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.imagesContainer{
+    margin: 10px 0;
+}
+
+.uploadedImage{
+    height: 80px;
+    width: 80px;
+}
+
+.selectImages{
+    background-color: black;
+    border-radius: 3px;
+    width:fit-content;
+    color: white;
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.selectImages:hover{
+    transform: scale(1.03);
+}
+
+.createButton{
+    background-color: black;
+    width: 100%;
+    font-size: 20px;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 40px;
+}
+.createButton:hover{
+    transform: scale(1.03);
 }
