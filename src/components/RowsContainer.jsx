@@ -1,14 +1,13 @@
 import React from 'react'
 import TierRows from './TierRows'
 
-const RowsContainer = () => {
+const RowsContainer = ({rows}) => {
+
   return (
-    <div style={{backgroundColor: 'black', border: '1px solid black'}}>
-        <TierRows label='S' labelColor='violet'/>
-        <TierRows label='A' labelColor='orange'/>
-        <TierRows label='B' labelColor='yellow'/>
-        <TierRows label='C' labelColor='lightgreen'/>
-        <TierRows label='F' labelColor='lightblue'/>
+    <div style={{ backgroundColor: 'black', border: '1px solid black' }}>
+      {rows.map((row) =>
+        <TierRows label={row.label} labelColor={row.labelColor} id={row.id} key={row.id} items={row.items} />
+      )}
     </div>
   )
 }

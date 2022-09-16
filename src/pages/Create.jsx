@@ -18,8 +18,6 @@ const Create = () => {
                 <h2 className={styles.labelInput}>Upload a set of images for the Tier List template:</h2>
                 <div className={styles.uploadImagesSection}>
                     <input id='images' style={{ display: 'none' }} multiple type='file' onChange={(event) => {
-                        console.log(event.target.files[0]);
-                        console.log(event.target.files);
                         setSelectedImages([...selectedImages, ...event.target.files]);
                     }} />
                     <label for="images" className={styles.selectImages}>Select Images</label>
