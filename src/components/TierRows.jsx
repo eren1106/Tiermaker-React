@@ -13,11 +13,11 @@ const TierRows = ({ label, labelColor, id, items }) => {
                 <h2>{label}</h2>
             </div>
             <div className={styles.imagesContainer}>
-                <Droppable droppableId={id}>
+                <Droppable droppableId={id} direction='horizontal'>
                     {(provided, snapshot) => (
                         <div
                             ref={provided.innerRef}
-                            style={{ backgroundColor: snapshot.isDraggingOver ? 'blue' : 'rgb(32, 32, 32)'}}
+                            style={{ backgroundColor: snapshot.isDraggingOver ? 'rgb(40, 40, 40)' : 'rgb(32, 32, 32)', display: 'flex'}}
                             {...provided.droppableProps}
                         >
                             {items.map((item, index)=><DragnDropImage src={item.src} id={item.id} index={index} key={item.id}/>)}

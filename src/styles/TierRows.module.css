@@ -1,23 +1,24 @@
-.wrapper{
+.wrapper {
     display: flex;
     border: 1px solid black;
     height: 80px;
 }
 
-.labelContainer{
+.labelContainer {
     flex: 1.75;
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
 }
 
-.imagesContainer{
+.imagesContainer {
     flex: 16;
     background-color: rgb(32, 32, 32);
     padding: 0 2px;
 }
 
-.settingContainer{
+.settingContainer {
     flex: 0.75;
     background-color: black;
     display: flex;
@@ -25,17 +26,19 @@
     align-items: center;
 }
 
-.settingIcon{
+.settingIcon {
     color: white;
+    cursor: pointer;
 }
 
-.upAndDownContainer{
+.upAndDownContainer {
     flex: 0.5;
     background-color: black;
     display: flex;
     flex-direction: column;
 }
 
-.upAndDownIcon{
+.upAndDownIcon {
     color: white;
+    cursor: pointer;
 }

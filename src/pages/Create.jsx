@@ -1,8 +1,31 @@
 import React, { useState } from 'react'
 import styles from '../styles/Create.module.css'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { setImages } from '../redux/actions/imageAction'
+import { v4 as uuidv4 } from 'uuid';
 
 const Create = () => {
     const [selectedImages, setSelectedImages] = useState([]); //store image src
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    function handleInputChange(e) {
+        const newImages = [...e.target.files].map((file) => {
+            return { id: uuidv4(), src: URL.createObjectURL(file) }
+        });
+        setSelectedImages([...selectedImages, ...newImages]);
+    }
+
+    function setImagesToStore() {
+        dispatch(setImages(selectedImages));
+    }
+
+    function navigateToTemplate() {
+        setImagesToStore();
+        navigate('/template');
+        console.log(selectedImages);
+    }
 
     return (
         <div className={styles.wrapper}>
@@ -17,19 +40,17 @@ const Create = () => {
             <div className={styles.inputContainer}>
                 <h2 className={styles.labelInput}>Upload a set of images for the Tier List template:</h2>
                 <div className={styles.uploadImagesSection}>
-                    <input id='images' style={{ display: 'none' }} multiple type='file' onChange={(event) => {
-                        setSelectedImages([...selectedImages, ...event.target.files]);
-                    }} />
+                    <input id='images' style={{ display: 'none' }} multiple type='file' onChange={handleInputChange} />
                     <label for="images" className={styles.selectImages}>Select Images</label>
                     {selectedImages.length > 0 &&
                         <div className={styles.imagesContainer}>
-                            {selectedImages.map((imageSrc) =>
-                                <img className={styles.uploadedImage} alt="not found" src={URL.createObjectURL(imageSrc)} />
+                            {selectedImages.map((image) =>
+                                <img className={styles.uploadedImage} alt="not found" src={image.src} key={image.id} />
                             )}
                         </div>}
                 </div>
             </div>
-            <button className={styles.createButton}>
+            <button className={styles.createButton} onClick={navigateToTemplate}>
                 Create Template
             </button>
         </div>

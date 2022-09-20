@@ -3,21 +3,19 @@ import RowsContainer from '../components/RowsContainer'
 import styles from '../styles/Template.module.css'
 import { DragDropContext } from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
+import ImagesContainer from '../components/ImagesContainer';
+import { useSelector } from 'react-redux';
 
 const Template = () => {
-  const initialItems = [
-    {
-      id: uuidv4(),
-      src: 'images/unnamed.png',
-    },
-  ]
+  const images = useSelector((state) => state.images.images);
+  console.log(images);
 
   const initialRows = [
     {
       id: uuidv4(),
       label: 'S',
       labelColor: 'violet',
-      items: initialItems
+      items: []
     },
     {
       id: uuidv4(),
@@ -43,6 +41,12 @@ const Template = () => {
       labelColor: 'lightblue',
       items: []
     },
+    {
+      id: 'container',
+      label: 'container',
+      labelColor: 'container',
+      items: images
+    }
   ]
 
   const onDragEnd = (result, rows, setRows) => {
@@ -87,7 +91,8 @@ const Template = () => {
   return (
     <div className={styles.wrapper}>
       <DragDropContext onDragEnd={result => onDragEnd(result, rows, setRows)}>
-        <RowsContainer rows={rows} />
+        <RowsContainer rows={rows.filter(row => row.id !== 'container')} />
+        <ImagesContainer items={rows.find((row) => row.id == 'container').items} />
       </DragDropContext>
     </div>
   )
