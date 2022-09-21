@@ -21,6 +21,7 @@
     font-size: 20px;
     padding: 5px;
     box-sizing: border-box; /* to avoid its width exceed its parent's width when set to 100%, basically what it does is exclude the border width */
+    margin-bottom: 20px;
 }
 
 .uploadImagesSection{

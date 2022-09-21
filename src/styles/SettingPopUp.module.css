@@ -1,0 +1,60 @@
+.wrapper{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.panel{
+    background-color: white;
+    padding: 20px 40px;
+    width: 45vw;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.text{
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.textField{
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 20px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.buttonContainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.button{
+    width: 40%;
+    border: none;
+    padding: 15px 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.closeIcon{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    color: grey;
+    cursor: pointer;
+    font-size: 22px;
+}

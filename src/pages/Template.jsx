@@ -5,6 +5,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
 import ImagesContainer from '../components/ImagesContainer';
 import { useSelector } from 'react-redux';
+import SettingPopUp from '../components/SettingPopUp';
 
 const Template = () => {
   const images = useSelector((state) => state.images.images);
@@ -90,9 +91,10 @@ const Template = () => {
   const [rows, setRows] = useState(initialRows);
   return (
     <div className={styles.wrapper}>
+      <SettingPopUp />
       <DragDropContext onDragEnd={result => onDragEnd(result, rows, setRows)}>
         <RowsContainer rows={rows.filter(row => row.id !== 'container')} />
-        <ImagesContainer items={rows.find((row) => row.id == 'container').items} />
+        <ImagesContainer items={rows.find((row) => row.id === 'container').items} />
       </DragDropContext>
     </div>
   )
