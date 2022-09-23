@@ -7,6 +7,7 @@
     left: 0;
     display: flex;
     justify-content: center;
+    z-index: 999;
 }
 
 .panel{
@@ -24,6 +25,21 @@
 .text{
     font-size: 24px;
     margin-bottom: 10px;
+}
+
+.colorContainer{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0 20px 0;
+}
+
+.color{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-sizing: border-box;
 }
 
 .textField{

@@ -1,14 +1,41 @@
 import React from 'react'
 import styles from '../styles/SettingPopUp.module.css'
 import CloseIcon from '@mui/icons-material/Close';
+import { useState } from 'react';
 
-const SettingPopUp = () => {
+const SettingPopUp = ({onClose}) => {
+    const colors = [
+        '#ff7f7f',
+        '#ffbf7f',
+        '#ffdf7f',
+        '#ffff7f',
+        '#bfff7f',
+        '#7fff7f',
+        '#7fffff',
+        '#7fbfff',
+        '#7f7fff',
+        '#ff7fff',
+        '#bf7fbf',
+        '#858585',
+        '#cfcfcf'
+    ];
+
+    const [selectedColor, setSelectedColor] = useState('#ff7f7f');
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.panel}>
-                <CloseIcon className={styles.closeIcon} />
+                <CloseIcon className={styles.closeIcon} onClick={onClose}/>
                 <h2 className={styles.text}>Choose a Label Background Color:</h2>
-                {/* <div>Colors</div> */}
+                <div className={styles.colorContainer}>
+                    {colors.map(color => 
+                        <div
+                            className={styles.color}
+                            style={{backgroundColor: color, border: selectedColor === color ? '2px solid black' : 'none'}}
+                            onClick={()=>{setSelectedColor(color)}}
+                        />
+                    )}
+                </div>
                 <h2 className={styles.text}>Edit Label Text Below:</h2>
                 <input className={styles.textField} />
                 <div className={styles.buttonContainer}>

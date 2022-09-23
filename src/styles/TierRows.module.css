@@ -18,27 +18,40 @@
     padding: 0 2px;
 }
 
-.settingContainer {
-    flex: 0.75;
-    background-color: black;
+.iconContainer{
+    flex: 1.3;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-around;
+    background-color: black;
+}
+
+.settingContainer {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: min-content;
+}
+.settingContainer:hover{
+    opacity: 0.5;
 }
 
 .settingIcon {
     color: white;
-    cursor: pointer;
 }
 
 .upAndDownContainer {
-    flex: 0.5;
-    background-color: black;
     display: flex;
     flex-direction: column;
 }
 
+.upAndDownIconContainer{
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.upAndDownIconContainer:hover{
+    opacity: 0.5;
+}
+
 .upAndDownIcon {
     color: white;
-    cursor: pointer;
 }

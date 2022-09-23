@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import SettingPopUp from '../components/SettingPopUp';
 
 const Template = () => {
-  const images = useSelector((state) => state.images.images);
+  const images = useSelector((state) => state.images.images); //access store throught useSelector
   console.log(images);
 
   const initialRows = [
@@ -89,11 +89,17 @@ const Template = () => {
   };
 
   const [rows, setRows] = useState(initialRows);
+
+  const [showSetting, setShowSetting] = useState(false);
+  function toggleSetting() {
+    setShowSetting(!showSetting);
+  }
+
   return (
     <div className={styles.wrapper}>
-      <SettingPopUp />
+      {showSetting && <SettingPopUp onClose={toggleSetting}/>}
       <DragDropContext onDragEnd={result => onDragEnd(result, rows, setRows)}>
-        <RowsContainer rows={rows.filter(row => row.id !== 'container')} />
+        <RowsContainer rows={rows.filter(row => row.id !== 'container')} onOpenSetting={toggleSetting}/>
         <ImagesContainer items={rows.find((row) => row.id === 'container').items} />
       </DragDropContext>
     </div>
