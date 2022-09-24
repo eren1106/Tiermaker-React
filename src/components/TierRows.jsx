@@ -5,8 +5,20 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import DragnDropImage from './DragnDropImage';
 import { Droppable } from 'react-beautiful-dnd';
+import { useDispatch } from 'react-redux';
+import { setSetting } from '../redux/actions/settingAction';
 
 const TierRows = ({ label, labelColor, id, items, onOpenSetting }) => {
+    const dispatch = useDispatch();
+
+    function handleOpenSetting(){
+        dispatch(setSetting({
+            label,
+            labelColor
+        }));
+        onOpenSetting();
+    }
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.labelContainer} style={{ backgroundColor: labelColor }}>
@@ -28,7 +40,7 @@ const TierRows = ({ label, labelColor, id, items, onOpenSetting }) => {
             </div>
 
             <div className={styles.iconContainer}>
-                <div className={styles.settingContainer} onClick={onOpenSetting}>
+                <div className={styles.settingContainer} onClick={handleOpenSetting}>
                     <SettingsIcon fontSize='large' className={styles.settingIcon} />
                 </div>
                 <div className={styles.upAndDownContainer}>

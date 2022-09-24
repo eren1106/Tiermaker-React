@@ -2,6 +2,7 @@ import React from 'react'
 import styles from '../styles/SettingPopUp.module.css'
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const SettingPopUp = ({onClose}) => {
     const colors = [
@@ -20,8 +21,11 @@ const SettingPopUp = ({onClose}) => {
         '#cfcfcf'
     ];
 
-    const [selectedColor, setSelectedColor] = useState('#ff7f7f');
+    const defaultSetting = useSelector(state => state.setting.setting);
 
+    const [labelText, setLabelText] = useState(defaultSetting.label);
+    const [selectedColor, setSelectedColor] = useState(defaultSetting.labelColor);
+    
     return (
         <div className={styles.wrapper}>
             <div className={styles.panel}>
@@ -37,7 +41,7 @@ const SettingPopUp = ({onClose}) => {
                     )}
                 </div>
                 <h2 className={styles.text}>Edit Label Text Below:</h2>
-                <input className={styles.textField} />
+                <input className={styles.textField} value={labelText}/>
                 <div className={styles.buttonContainer}>
                     <button className={styles.button}>Delete Row</button>
                     <button className={styles.button}>Clear Row Images</button>

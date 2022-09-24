@@ -15,31 +15,31 @@ const Template = () => {
     {
       id: uuidv4(),
       label: 'S',
-      labelColor: 'violet',
+      labelColor: '#ff7f7f',
       items: []
     },
     {
       id: uuidv4(),
       label: 'A',
-      labelColor: 'orange',
+      labelColor: '#ffbf7f',
       items: []
     },
     {
       id: uuidv4(),
       label: 'B',
-      labelColor: 'yellow',
+      labelColor: '#ffdf7f',
       items: []
     },
     {
       id: uuidv4(),
       label: 'C',
-      labelColor: 'lightgreen',
+      labelColor: '#ffff7f',
       items: []
     },
     {
       id: uuidv4(),
       label: 'F',
-      labelColor: 'lightblue',
+      labelColor: '#bfff7f',
       items: []
     },
     {
