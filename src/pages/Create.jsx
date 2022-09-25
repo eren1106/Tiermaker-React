@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { setImages } from '../redux/actions/imageAction'
 import { v4 as uuidv4 } from 'uuid';
+import { useSelector } from 'react-redux';
+import { setRows } from '../redux/actions/rowsAction';
 
 const Create = () => {
     const [selectedImages, setSelectedImages] = useState([]); //store image src
@@ -17,8 +19,17 @@ const Create = () => {
         setSelectedImages([...selectedImages, ...newImages]);
     }
 
+    const rows = useSelector(state => state.rows.rows); //initial rows
     function setImagesToStore() {
         dispatch(setImages(selectedImages));
+
+        const newStateRows = rows.map(row => {
+            if (row.id === 'container') {
+              return { ...row, items: selectedImages };
+            }
+            return row;
+          });
+        dispatch(setRows(newStateRows)); //insert selected images to row with id 'container'
     }
 
     function navigateToTemplate() {

@@ -3,6 +3,8 @@ import styles from '../styles/SettingPopUp.module.css'
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setRows } from '../redux/actions/rowsAction';
 
 const SettingPopUp = ({onClose}) => {
     const colors = [
@@ -26,6 +28,29 @@ const SettingPopUp = ({onClose}) => {
     const [labelText, setLabelText] = useState(defaultSetting.label);
     const [selectedColor, setSelectedColor] = useState(defaultSetting.labelColor);
     
+    const dispatch = useDispatch();
+    const rows = useSelector(state => state.rows.rows);
+    function handleClickColor(color){
+        setSelectedColor(color);
+        const newStateRows = rows.map(row => {
+            if(row.id === defaultSetting.id){
+                return {...row, labelColor: color};
+            }
+            return row;
+        });
+        dispatch(setRows(newStateRows));
+    }
+
+    function handleChangeLabel(e){
+        setLabelText(e.target.value);
+        const newStateRows = rows.map(row => {
+            if(row.id === defaultSetting.id){
+                return {...row, label: e.target.value};
+            }
+            return row;
+        });
+        dispatch(setRows(newStateRows));
+    }
     return (
         <div className={styles.wrapper}>
             <div className={styles.panel}>
@@ -36,12 +61,14 @@ const SettingPopUp = ({onClose}) => {
                         <div
                             className={styles.color}
                             style={{backgroundColor: color, border: selectedColor === color ? '2px solid black' : 'none'}}
-                            onClick={()=>{setSelectedColor(color)}}
+                            onClick={()=>{
+                                handleClickColor(color);
+                            }}
                         />
                     )}
                 </div>
                 <h2 className={styles.text}>Edit Label Text Below:</h2>
-                <input className={styles.textField} value={labelText}/>
+                <input className={styles.textField} value={labelText} onChange={handleChangeLabel}/>
                 <div className={styles.buttonContainer}>
                     <button className={styles.button}>Delete Row</button>
                     <button className={styles.button}>Clear Row Images</button>

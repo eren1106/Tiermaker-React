@@ -2,53 +2,20 @@ import React, { useState } from 'react'
 import RowsContainer from '../components/RowsContainer'
 import styles from '../styles/Template.module.css'
 import { DragDropContext } from 'react-beautiful-dnd';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import ImagesContainer from '../components/ImagesContainer';
 import { useSelector } from 'react-redux';
 import SettingPopUp from '../components/SettingPopUp';
+import { useDispatch } from 'react-redux';
+import { setRows } from '../redux/actions/rowsAction';
 
 const Template = () => {
-  const images = useSelector((state) => state.images.images); //access store throught useSelector
-  console.log(images);
+  const rows = useSelector(state => state.rows.rows) //access store throught useSelector
 
-  const initialRows = [
-    {
-      id: uuidv4(),
-      label: 'S',
-      labelColor: '#ff7f7f',
-      items: []
-    },
-    {
-      id: uuidv4(),
-      label: 'A',
-      labelColor: '#ffbf7f',
-      items: []
-    },
-    {
-      id: uuidv4(),
-      label: 'B',
-      labelColor: '#ffdf7f',
-      items: []
-    },
-    {
-      id: uuidv4(),
-      label: 'C',
-      labelColor: '#ffff7f',
-      items: []
-    },
-    {
-      id: uuidv4(),
-      label: 'F',
-      labelColor: '#bfff7f',
-      items: []
-    },
-    {
-      id: 'container',
-      label: 'container',
-      labelColor: 'container',
-      items: images
-    }
-  ]
+  const dispatch = useDispatch();
+  function setRowsToStore(e){
+    dispatch(setRows(e));
+  }
 
   const onDragEnd = (result, rows, setRows) => {
     if (!result.destination) return;
@@ -88,8 +55,6 @@ const Template = () => {
     }
   };
 
-  const [rows, setRows] = useState(initialRows);
-
   const [showSetting, setShowSetting] = useState(false);
   function toggleSetting() {
     setShowSetting(!showSetting);
@@ -98,7 +63,7 @@ const Template = () => {
   return (
     <div className={styles.wrapper}>
       {showSetting && <SettingPopUp onClose={toggleSetting}/>}
-      <DragDropContext onDragEnd={result => onDragEnd(result, rows, setRows)}>
+      <DragDropContext onDragEnd={result => onDragEnd(result, rows, setRowsToStore)}>
         <RowsContainer rows={rows.filter(row => row.id !== 'container')} onOpenSetting={toggleSetting}/>
         <ImagesContainer items={rows.find((row) => row.id === 'container').items} />
       </DragDropContext>

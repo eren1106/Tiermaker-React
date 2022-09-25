@@ -2,6 +2,7 @@ import { ActionTypes } from "../actionTypes"
 
 const initialState = {
     setting: {
+        id: 'id',
         label: 'label',
         labelColor: 'red',
     }

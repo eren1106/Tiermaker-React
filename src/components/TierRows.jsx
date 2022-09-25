@@ -13,6 +13,7 @@ const TierRows = ({ label, labelColor, id, items, onOpenSetting }) => {
 
     function handleOpenSetting(){
         dispatch(setSetting({
+            id,
             label,
             labelColor
         }));
@@ -22,7 +23,7 @@ const TierRows = ({ label, labelColor, id, items, onOpenSetting }) => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.labelContainer} style={{ backgroundColor: labelColor }}>
-                <h2>{label}</h2>
+                <h2 className={styles.labelText}>{label}</h2>
             </div>
             <div className={styles.imagesContainer}>
                 <Droppable droppableId={id} direction='horizontal'>

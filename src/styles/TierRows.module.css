@@ -1,7 +1,7 @@
 .wrapper {
     display: flex;
     border: 1px solid black;
-    height: 80px;
+    min-height: 80px;
 }
 
 .labelContainer {
@@ -10,6 +10,12 @@
     justify-content: center;
     align-items: center;
     user-select: none;
+    word-break: break-all; /* to fix long text from overflowing */
+    padding: 3px;
+}
+
+.labelText{
+    
 }
 
 .imagesContainer {
