@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RowsContainer from '../components/RowsContainer'
 import styles from '../styles/Template.module.css'
 import { DragDropContext } from 'react-beautiful-dnd';
@@ -10,8 +10,10 @@ import { useDispatch } from 'react-redux';
 import { setRows } from '../redux/actions/rowsAction';
 
 const Template = () => {
-  const rows = useSelector(state => state.rows.rows) //access store throught useSelector
+  const rows = useSelector(state => state.rows.rows); //access store throught useSelector
 
+  useEffect(()=>console.log(rows), [rows]);
+  
   const dispatch = useDispatch();
   function setRowsToStore(e){
     dispatch(setRows(e));

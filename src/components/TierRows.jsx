@@ -7,6 +7,7 @@ import DragnDropImage from './DragnDropImage';
 import { Droppable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 import { setSetting } from '../redux/actions/settingAction';
+import { downRow, upRow } from '../redux/actions/rowsAction';
 
 const TierRows = ({ label, labelColor, id, items, onOpenSetting }) => {
     const dispatch = useDispatch();
@@ -18,6 +19,14 @@ const TierRows = ({ label, labelColor, id, items, onOpenSetting }) => {
             labelColor
         }));
         onOpenSetting();
+    }
+
+    function handleUpRow(){
+        dispatch(upRow(id));
+    }
+
+    function handleDownRow(){
+        dispatch(downRow(id));
     }
 
     return (
@@ -45,10 +54,10 @@ const TierRows = ({ label, labelColor, id, items, onOpenSetting }) => {
                     <SettingsIcon fontSize='large' className={styles.settingIcon} />
                 </div>
                 <div className={styles.upAndDownContainer}>
-                    <div className={styles.upAndDownIconContainer}>
+                    <div className={styles.upAndDownIconContainer} onClick={handleUpRow}>
                         <KeyboardArrowUpIcon fontSize='large' className={styles.upAndDownIcon} />
                     </div>
-                    <div className={styles.upAndDownIconContainer}>
+                    <div className={styles.upAndDownIconContainer} onClick={handleDownRow}>
                         <KeyboardArrowDownIcon fontSize='large' className={styles.upAndDownIcon} />
                     </div>
                 </div>
