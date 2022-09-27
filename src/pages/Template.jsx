@@ -10,6 +10,8 @@ import { setRows } from '../redux/actions/rowsAction';
 import html2canvas from "html2canvas";
 
 const Template = () => {
+  const { title, description } = useSelector(state => state.titleDescription.titleDescription);
+
   const rows = useSelector(state => state.rows.rows); //access store throught useSelector
 
   const dispatch = useDispatch();
@@ -67,7 +69,6 @@ const Template = () => {
     // useCors to draw image from different origin
     html2canvas(node, { useCORS: true }).then(canvas => {
       let a = document.createElement("a");
-      document.body.appendChild(a);
       a.download = "image.png";
       a.href = canvas.toDataURL();
       a.click();
@@ -77,13 +78,17 @@ const Template = () => {
   return (
     <div className={styles.wrapper}>
       {showSetting && <SettingPopUp onClose={toggleSetting} />}
-      <div id="container">
-        <DragDropContext onDragEnd={result => onDragEnd(result, rows, setRowsToStore)}>
+      <h1>{title}</h1>
+      <p style={{ marginBottom: '30px' }}>{description}</p>
+      <DragDropContext onDragEnd={result => onDragEnd(result, rows, setRowsToStore)}>
+        <div id="container">
           <RowsContainer rows={rows.filter(row => row.id !== 'container')} onOpenSetting={toggleSetting} />
-          <ImagesContainer items={rows.find((row) => row.id === 'container').items} />
-        </DragDropContext>
+        </div>
+        <ImagesContainer items={rows.find((row) => row.id === 'container').items} />
+      </DragDropContext>
+      <div style={{width: '100%', textAlign: 'center'}}>
+        <button onClick={handleDownloadPng} className={styles.downloadButton}>Download Image</button>
       </div>
-      <button onClick={handleDownloadPng}>Download PNG</button>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../styles/Create.module.css'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
@@ -6,8 +6,27 @@ import { setImages } from '../redux/actions/imageAction'
 import { v4 as uuidv4 } from 'uuid';
 import { useSelector } from 'react-redux';
 import { setRows } from '../redux/actions/rowsAction';
+import { setTitleDescription } from '../redux/actions/titleDescriptionAction';
 
 const Create = () => {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    
+    function handleChangeTitle(e){
+        setTitle(e.target.value);
+    }
+
+    function handleChangeDescription(e){
+        setDescription(e.target.value);
+    }
+
+    function setTitleDescriptionToStore(){
+        dispatch(setTitleDescription({
+            title: title,
+            description: description,
+        }))
+    }
+
     const [selectedImages, setSelectedImages] = useState([]); //store image src
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -34,6 +53,7 @@ const Create = () => {
 
     function navigateToTemplate() {
         setImagesToStore();
+        setTitleDescriptionToStore();
         navigate('/template');
         console.log(selectedImages);
     }
@@ -42,11 +62,11 @@ const Create = () => {
         <div className={styles.wrapper}>
             <div className={styles.inputContainer}>
                 <h2 className={styles.labelInput}>Title of template:</h2>
-                <input className={styles.textField} />
+                <input className={styles.textField} value={title} onChange={handleChangeTitle}/>
             </div>
             <div className={styles.inputContainer}>
                 <h2 className={styles.labelInput}>Description of template:</h2>
-                <textarea className={styles.textField} rows='3' />
+                <textarea className={styles.textField} rows='3' value={description} onChange={handleChangeDescription}/>
             </div>
             <div className={styles.inputContainer}>
                 <h2 className={styles.labelInput}>Upload a set of images for the Tier List template:</h2>

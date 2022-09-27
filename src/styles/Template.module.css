@@ -1,3 +1,18 @@
 .wrapper{
     padding: 40px 200px;
 }
+
+.downloadButton{
+    font-size: 20px;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.downloadButton:hover {
+    transform: scale(1.03);
+}
