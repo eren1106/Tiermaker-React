@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import RowsContainer from '../components/RowsContainer'
 import styles from '../styles/Template.module.css'
 import { DragDropContext } from 'react-beautiful-dnd';
-// import { v4 as uuidv4 } from 'uuid';
 import ImagesContainer from '../components/ImagesContainer';
 import { useSelector } from 'react-redux';
 import SettingPopUp from '../components/SettingPopUp';
 import { useDispatch } from 'react-redux';
 import { setRows } from '../redux/actions/rowsAction';
+import html2canvas from "html2canvas";
 
 const Template = () => {
   const rows = useSelector(state => state.rows.rows); //access store throught useSelector
 
-  useEffect(()=>console.log(rows), [rows]);
-  
   const dispatch = useDispatch();
-  function setRowsToStore(e){
+  function setRowsToStore(e) {
     dispatch(setRows(e));
   }
 
@@ -62,13 +60,30 @@ const Template = () => {
     setShowSetting(!showSetting);
   }
 
+  //download screenshot of tier container
+  function handleDownloadPng() {
+    const node = document.getElementById("container");
+
+    // useCors to draw image from different origin
+    html2canvas(node, { useCORS: true }).then(canvas => {
+      let a = document.createElement("a");
+      document.body.appendChild(a);
+      a.download = "image.png";
+      a.href = canvas.toDataURL();
+      a.click();
+    });
+  }
+
   return (
     <div className={styles.wrapper}>
-      {showSetting && <SettingPopUp onClose={toggleSetting}/>}
-      <DragDropContext onDragEnd={result => onDragEnd(result, rows, setRowsToStore)}>
-        <RowsContainer rows={rows.filter(row => row.id !== 'container')} onOpenSetting={toggleSetting}/>
-        <ImagesContainer items={rows.find((row) => row.id === 'container').items} />
-      </DragDropContext>
+      {showSetting && <SettingPopUp onClose={toggleSetting} />}
+      <div id="container">
+        <DragDropContext onDragEnd={result => onDragEnd(result, rows, setRowsToStore)}>
+          <RowsContainer rows={rows.filter(row => row.id !== 'container')} onOpenSetting={toggleSetting} />
+          <ImagesContainer items={rows.find((row) => row.id === 'container').items} />
+        </DragDropContext>
+      </div>
+      <button onClick={handleDownloadPng}>Download PNG</button>
     </div>
   )
 }

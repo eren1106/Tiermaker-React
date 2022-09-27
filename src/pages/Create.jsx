@@ -52,7 +52,7 @@ const Create = () => {
                 <h2 className={styles.labelInput}>Upload a set of images for the Tier List template:</h2>
                 <div className={styles.uploadImagesSection}>
                     <input id='images' style={{ display: 'none' }} multiple type='file' onChange={handleInputChange} />
-                    <label for="images" className={styles.selectImages}>Select Images</label>
+                    <label htmlFor="images" className={styles.selectImages}>Select Images</label>
                     {selectedImages.length > 0 &&
                         <div className={styles.imagesContainer}>
                             {selectedImages.map((image) =>
