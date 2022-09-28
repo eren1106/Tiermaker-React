@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/tiermaker/static/css/main.825d26e5.css",
-    "main.js": "/tiermaker/static/js/main.93e4aa08.js",
-    "index.html": "/tiermaker/index.html",
-    "main.825d26e5.css.map": "/tiermaker/static/css/main.825d26e5.css.map",
-    "main.93e4aa08.js.map": "/tiermaker/static/js/main.93e4aa08.js.map"
+    "main.css": "/Tiermaker-React/static/css/main.825d26e5.css",
+    "main.js": "/Tiermaker-React/static/js/main.cbf1f2a7.js",
+    "index.html": "/Tiermaker-React/index.html",
+    "main.825d26e5.css.map": "/Tiermaker-React/static/css/main.825d26e5.css.map",
+    "main.cbf1f2a7.js.map": "/Tiermaker-React/static/js/main.cbf1f2a7.js.map"
   },
   "entrypoints": [
     "static/css/main.825d26e5.css",
-    "static/js/main.93e4aa08.js"
+    "static/js/main.cbf1f2a7.js"
   ]
 }
