@@ -1,5 +1,5 @@
 .wrapper{
-    margin: 100px 450px;
+    margin: 100px 30vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,4 +68,22 @@
 }
 .createButton:hover{
     transform: scale(1.03);
+}
+
+@media screen and (max-width: 1400px){
+    .wrapper {
+        margin: 100px 20vw;
+    }
+}
+
+@media screen and (max-width: 950px){
+    .wrapper {
+        margin: 100px 10vw;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .wrapper {
+        margin: 100px 5vw;
+    }
 }

@@ -5,7 +5,8 @@
 }
 
 .labelContainer {
-    flex: 1.75;
+    /* flex: 1.75; */
+    width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,13 +20,13 @@
 }
 
 .imagesContainer {
-    flex: 16;
     background-color: rgb(32, 32, 32);
     padding: 0 2px;
+    flex-basis: calc(100% - 100px - 80px); /* 100% - label width - setting width */
 }
 
 .iconContainer{
-    flex: 1.3;
+    width: 80px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -60,4 +61,16 @@
 
 .upAndDownIcon {
     color: white;
+}
+
+@media screen and (max-width: 500px) {
+    .iconContainer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+    }
+    .imagesContainer {
+        flex-basis: calc(100% - 100px - 50px);
+    }
 }

@@ -2,7 +2,7 @@
     background-image: url('https://c4.wallpaperflare.com/wallpaper/871/796/1020/smoke-veil-colorful-rainbow-wallpaper-preview.jpg');
     
     /* Full height */
-    min-height: calc(100vh - 64px);
+    min-height: calc(100vh - 58px); /*100vh minus navbar height*/
 
     /* Center and scale the image nicely */
     background-position: center;
@@ -15,14 +15,14 @@
 }
 
 .logoImage{
-    height: 200px;
-    background-color: rgba(255, 255, 255, 0.134);
+    width: clamp(300px, 60vw, 700px);
+    background-color: rgba(255, 255, 255, 0.208);
     border-radius: 20px;
 }
 
 .createButton{
     border: none;
-    padding: 15px 25px;
+    padding: 10px 20px;
     font-size: 30px;
     background-color: #3a5795;
     color: white;
@@ -34,4 +34,10 @@
 
 .createButton:hover {
     transform: scale(1.03);
+}
+
+@media screen and (max-width: 850px){
+    .createButton{
+        font-size: 20px;
+    }
 }

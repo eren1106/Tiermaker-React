@@ -1,5 +1,5 @@
 .wrapper{
-    padding: 20px 200px;
+    padding: 20px 15vw;
 }
 
 .downloadButton{
@@ -15,4 +15,16 @@
 
 .downloadButton:hover {
     transform: scale(1.03);
+}
+
+@media screen and (max-width: 1200px){
+    .wrapper{
+        padding: 20px 5vw;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .wrapper{
+        padding: 0px 1vw;
+    }
 }

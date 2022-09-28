@@ -10,7 +10,7 @@ const DragnDropImage = ({ src, id, index }) => {
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
-                    style={{ ...provided.draggableProps.style, width: 'min-content' }}
+                    style={{ ...provided.draggableProps.style, width: 'min-content', display: 'flex' }}
                 >
                     <div className={styles.wrapper}>
                         <img src={src} className={styles.image} />

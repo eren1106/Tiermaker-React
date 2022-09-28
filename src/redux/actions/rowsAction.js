@@ -48,3 +48,10 @@ export const addBottomRow = (id) => {
         payload: id
     }
 }
+
+export const resetRows = () => {
+    return {
+        type: ActionTypes.RESET_ROWS,
+        payload: null,
+    }
+}

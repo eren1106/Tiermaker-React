@@ -39,7 +39,7 @@ const TierRows = ({ label, labelColor, id, items, onOpenSetting }) => {
                     {(provided, snapshot) => (
                         <div
                             ref={provided.innerRef}
-                            style={{ backgroundColor: snapshot.isDraggingOver ? 'rgb(40, 40, 40)' : 'rgb(32, 32, 32)', display: 'flex' }}
+                            style={{ backgroundColor: snapshot.isDraggingOver ? 'rgb(40, 40, 40)' : 'rgb(32, 32, 32)', display: 'flex', flexWrap: 'wrap' }}
                             {...provided.droppableProps}
                         >
                             {items.map((item, index) => <DragnDropImage src={item.src} id={item.id} index={index} key={item.id} />)}

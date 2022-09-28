@@ -10,6 +10,11 @@ const NavBar = () => {
                     <h1>Tiermaker</h1>
                 </Link>
             </div>
+            <div style={{width: 'min-content'}}>
+                <Link to="/create" className={styles.create}>
+                    <h1 style={{fontWeight: 'normal'}}>Create</h1>
+                </Link>
+            </div>
         </div>
     )
 }

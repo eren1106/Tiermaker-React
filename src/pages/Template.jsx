@@ -64,7 +64,7 @@ const Template = () => {
 
   //download screenshot of tier container
   function handleDownloadPng() {
-    const node = document.getElementById("container");
+    const node = document.getElementById("rowContainer");
 
     // useCors to draw image from different origin
     html2canvas(node, { useCORS: true }).then(canvas => {
@@ -81,7 +81,7 @@ const Template = () => {
       <h1>{title}</h1>
       <p style={{ marginBottom: '30px' }}>{description}</p>
       <DragDropContext onDragEnd={result => onDragEnd(result, rows, setRowsToStore)}>
-        <div id="container">
+        <div id="rowContainer">
           <RowsContainer rows={rows.filter(row => row.id !== 'container')} onOpenSetting={toggleSetting} />
         </div>
         <ImagesContainer items={rows.find((row) => row.id === 'container').items} />

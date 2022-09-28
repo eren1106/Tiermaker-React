@@ -96,6 +96,8 @@ export const rowsReducer = (state = initialState, { type, payload }) => {
             }
             state.rows.splice(index + 1, 0, newRow);
             return state;
+        case ActionTypes.RESET_ROWS:
+            return {...state};
         default:
             return state;
     }
